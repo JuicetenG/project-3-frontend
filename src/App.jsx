@@ -1,4 +1,4 @@
-// src/App.jsx
+import './App.css';
 import { useContext } from 'react';
 import { Routes, Route } from 'react-router'
 import NavBar from './components/NavBar/NavBar';
@@ -13,14 +13,14 @@ const App = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <>
+    <div className="app-container">
       <NavBar />
       <Routes>
         <Route path='/' element={user ? <Dashboard /> : <Landing /> } />
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/sign-in' element={<SignInForm />} />
-      </Routes> 
-    </>
+      </Routes>
+    </div>
   );
 };
 
