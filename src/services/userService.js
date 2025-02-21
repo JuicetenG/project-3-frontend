@@ -7,7 +7,6 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 const index = async () => {
     try {
       // Change the fetch request so that it includes the Authorization header
-
       // EXAMPLE OF MAKING A REQUEST AFTER YOU ARE LOGGED IN, 
       // ALL LOGGED REQUEST MUST HAVE THE AUTHORIZATION HEADER
       const res = await fetch(BASE_URL, {

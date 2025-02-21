@@ -3,10 +3,11 @@ import './SideBar.css'
 
 const SideBar = (props) => {
     return (
-        <div>
+        <div className='sidebar-container'>
+          <h2>Add a Project</h2>
             <ProjectForm createProject={props.createProject}/>
         </div>
-    )
+    );
 }
 
 export default SideBar
