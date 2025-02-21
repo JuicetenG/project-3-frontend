@@ -1,5 +1,5 @@
 // src/components/Dashboard/Dashboard.jsx
-
+import './Dashboard.css';
 import { useEffect, useContext } from 'react';
 
 import { UserContext } from '../../contexts/UserContext';
@@ -28,8 +28,9 @@ const Dashboard = () => {
   }, [user.username]); // this useEffect is running when component loads, or when the value
   // of user changes
 
+
   return (
-    <main>
+    <main className='projects-container'>
       <h1>Welcome, {user.username}</h1>
       <p>
         This is the dashboard page where you can see a list of all the users.
