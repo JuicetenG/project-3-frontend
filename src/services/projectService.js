@@ -12,4 +12,23 @@ const index = async () => {
     }
 }
 
-export { index }
+const create = async (projectFormData) => {
+    try{
+        const response = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', 
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(projectFormData)
+        })
+        const newProjectData = await response.json()
+        return newProjectData
+
+    } catch (err) {
+        console.log(err)
+    }
+    
+}
+
+export { index, create }

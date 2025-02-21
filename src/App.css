@@ -1,10 +1,17 @@
 .app-container {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 100px 1fr;
   grid-gap: 10px;
-  grid-template-areas: "a a"
-                       "b c"
-                       "b c";
+  grid-template-areas: "a"
+                       "b";
+}
+
+nav {
+  grid-area: a;
+}
+
+.routes {
+  grid-area: b;
 }

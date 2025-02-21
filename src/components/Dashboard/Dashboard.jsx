@@ -3,6 +3,7 @@ import './Dashboard.css';
 import { useEffect, useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import Projects from '../Projects/Projects';
+import SideBar from '../SideBar/SideBar';
 
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
@@ -32,7 +33,7 @@ const Dashboard = () => {
       try {
         const fetchedProjects = await projectService.index();
         console.log(fetchedProjects);
-        const userProjects = fetchedProjects.filter((project) => project.user._id = user._id)
+        const userProjects = fetchedProjects.filter((project) => project.user._id === user._id)
         console.log(userProjects)
         setProjects(userProjects)
       } catch (err) {
@@ -40,17 +41,33 @@ const Dashboard = () => {
       }
     }
     fetchProjects()
-    console.log(projects)
+    
 
   }, [user.username]); // this useEffect is running when component loads, or when the value
   // of user changes
 
+  const createProject = async (projectFormData) => {
+    try {
+      const newProject = await projectService.create(projectFormData)
+      setProjects([...projects, newProject])
+
+
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
-    <main className='projects-container'>
-      <h1>Welcome, {user.username}</h1>
-      <Projects />
-    </main>
+    <div className="main-container">
+      <main className='projects-container'>
+        <h1>Welcome, {user.username}</h1>
+        <Projects projects={projects}/>
+      </main>
+      <div className="sidebar-container">
+        <SideBar createProject={createProject}/>
+      </div>
+    </div>
   );
 };
 
