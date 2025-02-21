@@ -1,6 +1,16 @@
-const Projects = () => {
+
+// import './projects.css'
+
+const Projects = (props) => {
     return(
-        <div>Helloooo</div>
+        <ul>
+           <h1>Projects</h1>
+           {props.projects.map((project, idx) => (
+            <li key={idx}>{project.title}
+            <br />
+            {project.description}</li>
+           ))} 
+        </ul>
     )
 }
 
