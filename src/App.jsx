@@ -1,4 +1,5 @@
 // src/App.jsx
+import from './App.css'
 import { useContext } from 'react';
 import { Routes, Route } from 'react-router'
 import NavBar from './components/NavBar/NavBar';

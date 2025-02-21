@@ -29,14 +29,15 @@ const Dashboard = () => {
   // of user changes
 
   return (
-    <main>
+    <main className='dashboard-container'>
+    <div>
       <h1>Welcome, {user.username}</h1>
       <p>
         This is the dashboard page where you can see a list of all the users.
       </p>
+    </div>  
     </main>
   );
 };
 
 export default Dashboard;
-
