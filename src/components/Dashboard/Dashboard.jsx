@@ -1,10 +1,10 @@
 // src/components/Dashboard/Dashboard.jsx
 import './Dashboard.css';
 import { useEffect, useContext, useState } from 'react';
+// import { Routes, Route } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 import Projects from '../Projects/Projects';
 import SideBar from '../SideBar/SideBar';
-import { Routes, Route } from 'react-router'
 
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
@@ -12,6 +12,7 @@ import * as projectService from '../../services/projectService';
 const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
+  const [currentProject, setCurrentProject] = useState(null);
 
   useEffect(() => {
 
@@ -62,12 +63,7 @@ const Dashboard = () => {
     <div className="main-container">
       <main className='projects-container'>
         <h1>Welcome, {user.username}</h1>
-        <Projects projects={projects}/>
-        <Routes>
-          <Route>
-            
-          </Route>
-        </Routes>
+        <Projects projects={projects} currentProject={currentProject} setCurrentProject={setCurrentProject} />
       </main>
       <div className="sidebar-container">
         <SideBar createProject={createProject} />
