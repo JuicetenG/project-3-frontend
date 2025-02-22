@@ -12,9 +12,9 @@ const Projects = (props) => {
                 <br />
                 {project.description}
             </li>
-           ))} 
+           ))};
         </ul>
-    )
-}
+    );
+};
 
 export default Projects;
