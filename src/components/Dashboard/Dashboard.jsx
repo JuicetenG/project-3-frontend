@@ -4,6 +4,7 @@ import { useEffect, useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import Projects from '../Projects/Projects';
 import SideBar from '../SideBar/SideBar';
+import { Routes, Route } from 'react-router'
 
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
@@ -62,6 +63,11 @@ const Dashboard = () => {
       <main className='projects-container'>
         <h1>Welcome, {user.username}</h1>
         <Projects projects={projects}/>
+        <Routes>
+          <Route>
+            
+          </Route>
+        </Routes>
       </main>
       <div className="sidebar-container">
         <SideBar createProject={createProject} />
