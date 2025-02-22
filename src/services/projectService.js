@@ -33,7 +33,7 @@ const create = async (projectFormData) => {
     }   
 };
 
-const update = async (projectFormData, projectId) => {
+const updateProject = async (projectFormData, projectId) => {
   try {
     const response = await fetch(`${BASE_URL}/${projectId}`, {
       method: 'PUT',
@@ -51,8 +51,25 @@ const update = async (projectFormData, projectId) => {
   }
 };
 
+const deleteProject = async (projectId) => {
+  try {
+    const response = await fetch(BASE_URL + `/${projectId}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    });
+
+    const deletedProject = await response.json();
+    return deletedProject;
+
+  } catch(err) {
+    console.log(err);
+  }
+};
+
+
 export { 
   index, 
   create,
-  update, 
+  updateProject, 
+  deleteProject,
 }
