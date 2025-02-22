@@ -10,7 +10,8 @@ import * as projectService from '../../services/projectService';
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState([]);
+
   useEffect(() => {
 
     // THIS IS AN EXAMPLE OF AN API CALL 
@@ -33,14 +34,14 @@ const Dashboard = () => {
       try {
         const fetchedProjects = await projectService.index();
         console.log(fetchedProjects);
-        const userProjects = fetchedProjects.filter((project) => project.user._id === user._id)
-        console.log(userProjects)
-        setProjects(userProjects)
+        const userProjects = fetchedProjects.filter((project) => project.user._id === user._id);
+        setProjects(userProjects);
+        
       } catch (err) {
         console.log(err)
       }
     }
-    fetchProjects()
+    fetchProjects();
     
 
   }, [user.username]); // this useEffect is running when component loads, or when the value
@@ -50,8 +51,6 @@ const Dashboard = () => {
     try {
       const newProject = await projectService.create(projectFormData)
       setProjects([...projects, newProject])
-
-
 
     } catch (err) {
       console.log(err)
@@ -65,7 +64,7 @@ const Dashboard = () => {
         <Projects projects={projects}/>
       </main>
       <div className="sidebar-container">
-        <SideBar createProject={createProject}/>
+        <SideBar createProject={createProject} />
       </div>
     </div>
   );
