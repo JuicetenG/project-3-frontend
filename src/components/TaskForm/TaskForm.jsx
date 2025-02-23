@@ -1,34 +1,66 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
-const TaskForm = ({ onAddTask }) => {
-    const [task, setTask] = useState("");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!task.trim()) return;
-        onAddTask(task);
-        setTask("");
-    };
-
-    return (
-        <form onSubmit={handleSubmit} className="p-4">
-            <input
-                type="text"
-                placeholder="Enter task..."
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                className="border p-2 w-full rounded"
-            />
-            <button type="submit" className="mt-2 bg-blue-500 text-white p-2 rounded">
-                Add Task
-            </button>
-        </form>
-    );
+const initialState = {
+  name: '',
+  description: '',
+  priority: 'low',
+  category: 'general'
 };
 
-TaskForm.propTypes = {
-    onAddTask: PropTypes.func.isRequired,
+const TaskForm = () => {
+  const [ formData, setFormData ] = useState({
+    name: '',
+    description: '',
+    priority: 'low',
+    category: 'general'
+  });
+
+  
+  const handleChange = (e) => {
+    setFormData({
+        ...formData, 
+        [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      setFormData(initialState);
+  };
+
+  return (
+      <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="title">Task name:</label>
+            <input type="text" name='name' id='name' value={formData.name} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="description">Description:</label>
+            <input type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
+          </div>
+          <select 
+            id="priority" 
+            name="priority" 
+            value={formData.priority} 
+            onChange={handleChange}
+          >
+            <option defaultValue='low'>low</option>
+            <option value='normal'>normal</option>
+            <option value='high'>high</option>
+          </select>
+          <select 
+            id="category" 
+            name="category" 
+            value={formData.category} 
+            onChange={handleChange}
+          >
+            <option defaultValue='general'>general</option>
+            <option value='backend'>backend</option>
+            <option value='frontend'>frontend</option>
+          </select>
+          <div><button type="submit">Add Task</button></div>
+      </form>
+  );
 };
 
 export default TaskForm;
