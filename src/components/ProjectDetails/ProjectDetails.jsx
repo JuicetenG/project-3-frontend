@@ -5,7 +5,7 @@
 
 const ProjectDetails = (props) => {
     // console.log(props)
-    console.log(props.currentProject)
+    console.log(props)
     
     return (
        <div className="project-details-container">

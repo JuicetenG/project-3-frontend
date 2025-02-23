@@ -5,11 +5,11 @@ import ProjectList from '../ProjectList/ProjectList';
 
 const Projects = (props) => {
 
-
+  console.log(props.currentProject);
     return(
         <div>
             {props.currentProject === null ? (
-                <ProjectList setCurrentProject={props.setCurrentProject} projects={props.projects}/>
+                <ProjectList setCurrentProject={props.setCurrentProject} currentProject={props.currentProject} projects={props.projects}/>
             ): (
                 <ProjectDetails currentProject={props.currentProject} setCurrentProject={props.setCurrentProject}/>
             )}
