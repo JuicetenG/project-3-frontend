@@ -4,8 +4,6 @@ import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import ProjectList from '../ProjectList/ProjectList';
 
 const Projects = (props) => {
-
-  console.log(props.currentProject);
     return(
         <div>
             {props.currentProject === null ? (

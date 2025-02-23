@@ -1,7 +1,6 @@
 // src/components/Dashboard/Dashboard.jsx
 import './Dashboard.css';
 import { useEffect, useContext, useState } from 'react';
-// import { Routes, Route } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 import Projects from '../Projects/Projects';
 import SideBar from '../SideBar/SideBar';
