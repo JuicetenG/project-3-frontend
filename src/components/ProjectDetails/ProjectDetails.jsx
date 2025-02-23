@@ -5,13 +5,14 @@
 
 const ProjectDetails = (props) => {
     // console.log(props)
-    console.log(props)
+    console.log(props);
     
     return (
        <div className="project-details-container">
         <main className="details-container">
             <h1>{props.currentProject.title}</h1>
             <p>{props.currentProject.description}</p>
+            <button onClick={() => props.setCurrentProject(null)}>back</button>
         </main>
        </div>
     )
