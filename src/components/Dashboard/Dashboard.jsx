@@ -14,6 +14,7 @@ const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState(null);
+  
 
   useEffect(() => {
 
@@ -64,7 +65,7 @@ const Dashboard = () => {
     <div className="main-container">
       <main className='projects-container'>
         <h1>Welcome, {user.username}</h1>
-        <Projects projects={projects} currentProject={currentProject} setCurrentProject={setCurrentProject} />
+        <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
       </main>
       <div className="sidebar-container">
         <SideBar createProject={createProject} />

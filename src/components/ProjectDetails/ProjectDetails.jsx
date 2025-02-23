@@ -1,37 +1,17 @@
 
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import * as projectService from '../../services/projectService'
+// import { useState, useEffect } from 'react'
+// import { useParams } from 'react-router-dom'
+// import * as projectService from '../../services/projectService'
 
-const ProjectDetails = () => {
-    const { id } = useParams()
-    const [project, setProject] = useState(null)
-    const [formData, setFormData] = useState({ title: '', description: '' })
-
-
-    useEffect(() => {
-        fetchProject()
-    }, [id])
-
-    const fetchProject = async () => {
-        console.log("Fetching with id", id);
-        try {
-            const fetchedProject = await projectService.getById(id)
-            console.log("Fetched project:", fetchedProject);
-            setProject(fetchedProject)
-            setFormData({ title: fetchedProject.title, description: fetchedProject.description })
-        } catch(err) {
-            console.log(err)
-        }
-    }
-
-    if (!project) return <p>Loading project...</p>;
-
+const ProjectDetails = (props) => {
+    // console.log(props)
+    console.log(props.currentProject)
+    
     return (
        <div className="project-details-container">
         <main className="details-container">
-            <h1>{project.title}</h1>
-            <p>{project.description}</p>
+            <h1>{props.currentProject.title}</h1>
+            <p>{props.currentProject.description}</p>
         </main>
        </div>
     )
