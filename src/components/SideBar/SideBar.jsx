@@ -14,7 +14,7 @@ const SideBar = (props) => {
           ) : (
             <div>
               <h2>Add task to {props.currentProject.title}</h2>
-              <TaskForm currentProject={props.currentProject} setCurrentProject={props.setCurrentProject} />
+              <TaskForm currentProject={props.currentProject} setCurrentProject={props.setCurrentProject} addTask={props.addTask} />
             </div>
           )}
         </div>
