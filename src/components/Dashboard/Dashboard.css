@@ -1,17 +1,25 @@
 .main-container {
   display: grid;
   height: 100%;
+  width: 1400px;
   grid-template-columns: 1fr 3fr;
   grid-template-areas: "a b";
+  justify-self: center;
+  grid-gap: 10px;
 }
 
 .projects-container {
   grid-area: b;
+  background-color: #457b9d;
 }
 
 .sidebar-container {
   grid-area: a;
+<<<<<<< HEAD
   /* height: 100%; */
+=======
+  background-color: #457b9d;
+>>>>>>> d419d5892919a62011b28e46765761b46971e495
   display: flex;
   flex-direction: column;
   padding-top: 40px;
