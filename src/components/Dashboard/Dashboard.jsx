@@ -72,13 +72,15 @@ const Dashboard = () => {
   }
   
   return (
-    <div className="main-container">
-      <main className='projects-container'>
-        <h1>Welcome, {user.username}</h1>
-        <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
-      </main>
-      <div className="sidebar-container">
-        <SideBar createProject={createProject} currentProject={currentProject} setCurrentProject={setCurrentProject} addTask={addTask} />
+    <div className="dashboard-wrapper">
+      <div className="main-container">
+        <main className='projects-container'>
+          <h1>Welcome, {user.username}</h1>
+          <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
+        </main>
+        <div className="sidebar-container">
+          <SideBar createProject={createProject} currentProject={currentProject} setCurrentProject={setCurrentProject} addTask={addTask} />
+        </div>
       </div>
     </div>
   );
