@@ -25,31 +25,26 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        {/* Left Section - Greeting */}
-        {user && (
-          <div className="nav-left">
-            <span className="nav-greeting">Hello, {user.username}</span>
-          </div>
-        )}
-
-        {/* Center Section - App Name */}
-        <div className="nav-center">
+        {/* Left Section - CODE_tracker */}
+        <div className="nav-left">
           <span className="nav-title">CODE_tracker</span>
         </div>
 
-        {/* Right Section - Dashboard & Sign Out */}
-        {user ? (
-          <div className="nav-right">
-            <Link to="/" className="nav-dashboard">Dashboard</Link>
-            <button className="nav-signout" onClick={handleSignOut}>Sign Out</button>
-          </div>
-        ) : (
-          <div className="nav-right">
-            <Link to="/">Home</Link>
-            <Link to="/sign-in">Sign In</Link>
-            <Link to="/sign-up">Sign Up</Link>
-          </div>
-        )}
+        {/* Right Section - Dashboard & Sign Out OR Home, Sign In, Sign Up */}
+        <div className={`nav-right ${user ? "signed-in" : "not-signed-in"}`}>
+          {user ? (
+            <>
+              <Link to="/" className="nav-dashboard">Dashboard</Link>
+              <button className="nav-signout" onClick={handleSignOut}>Sign Out</button>
+            </>
+          ) : (
+            <>
+              <Link to="/">Home</Link>
+              <Link to="/sign-in">Sign In</Link>
+              <Link to="/sign-up">Sign Up</Link>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
