@@ -57,7 +57,7 @@ const Dashboard = () => {
     } catch (err) {
       console.log(err)
     }
-  }
+  };
 
   const addTask = async (projectId, formData) => {
     const newTask = await projectService.createTask(projectId, formData);
