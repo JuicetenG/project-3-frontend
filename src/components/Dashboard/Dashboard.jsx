@@ -54,7 +54,6 @@ const Dashboard = () => {
   const addTask = async (projectId, formData) => {
     const newTask = await projectService.createTask(projectId, formData);
     const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
-    const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
     setCurrentProject(newCurrentProject);
 
     

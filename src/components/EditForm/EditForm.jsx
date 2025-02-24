@@ -24,7 +24,7 @@ const EditForm = ({ project, setCurrentProject, setProjects }) => {
                 prevProjects.map((p) => (p._id === updatedProject._id ? updatedProject : p))
             );
 
-            setCurrentProject(updatedProject);
+            setCurrentProject(null);
         } catch (err) {
             console.log(err);
         }
