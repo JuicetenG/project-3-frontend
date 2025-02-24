@@ -16,7 +16,7 @@ const Dashboard = () => {
   
 
   useEffect(() => {
-
+    
     // THIS IS AN EXAMPLE OF AN API CALL 
     // AFTER YOU ARE LOGGED IN, PLEASE LOOK AT THE USERSERVICE
     // HEADERS FOR SENDING THE JWT TOKEN OVER
