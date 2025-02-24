@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import * as taskService from '../../services/projectService';
 
 const initialState = {
   name: '',
@@ -17,11 +16,6 @@ const TaskForm = (props) => {
   });
 
   console.log(props);
-  const addTask = async (projectId, formData) => {
-    const newTask = await taskService.createTask(projectId, formData);
-    props.setCurrentProject({ ...props.currentProject, tasks: [props.currentProject.tasks, newTask]});
-    console.log(newTask, props.currentProject);
-  }
 
   const handleChange = (e) => {
     setFormData({
@@ -33,7 +27,7 @@ const TaskForm = (props) => {
   const handleSubmit = (e) => {
       e.preventDefault();
       formData.isComplete = 'false';
-      addTask(props.currentProject._id, formData);
+      props.addTask(props.currentProject._id, formData);
       setFormData(initialState);
   };
 

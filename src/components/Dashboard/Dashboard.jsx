@@ -59,6 +59,16 @@ const Dashboard = () => {
     }
   }
 
+  const addTask = async (projectId, formData) => {
+    const newTask = await projectService.createTask(projectId, formData);
+    setCurrentProject({ ...currentProject, tasks: [...currentProject.tasks, newTask]});
+    console.log(currentProject);
+    const updatedProjectList = projects.map((project) => (
+      project._id !== currentProject._id ? project : currentProject
+    ));
+    setProjects(updatedProjectList);
+  }
+  
   return (
     <div className="main-container">
       <main className='projects-container'>
@@ -66,7 +76,7 @@ const Dashboard = () => {
         <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
       </main>
       <div className="sidebar-container">
-        <SideBar createProject={createProject} currentProject={currentProject} setCurrentProject={setCurrentProject}/>
+        <SideBar createProject={createProject} currentProject={currentProject} setCurrentProject={setCurrentProject} addTask={addTask} />
       </div>
     </div>
   );
