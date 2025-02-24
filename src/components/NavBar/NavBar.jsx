@@ -21,8 +21,8 @@ const NavBar = () => {
     setUser(null)
   }
 
-  return (
-<nav>
+return (
+    <nav>
       {user ? (
         <ul>
           <li>Hello, {user.username}</li>

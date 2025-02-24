@@ -17,7 +17,12 @@ const TaskForm = (props) => {
   });
 
   console.log(props);
-  
+  const addTask = async (projectId, formData) => {
+    const newTask = await taskService.createTask(projectId, formData);
+    props.setCurrentProject({ ...props.currentProject, tasks: [props.currentProject.tasks, newTask]});
+    console.log(newTask, props.currentProject);
+  }
+
   const handleChange = (e) => {
     setFormData({
         ...formData, 
@@ -25,17 +30,10 @@ const TaskForm = (props) => {
     });
   };
 
-  const handleAddTask = async (projectId, formData) => {
-    console.log(projectId);
-    const newTask = await taskService.createTask(projectId, formData);
-    props.setCurrentProject({ ...props.currentProject, tasks: [...props.currentProject.tasks, newTask]});
-    console.log(newTask, props.currentProject);
-  }
-
   const handleSubmit = (e) => {
       e.preventDefault();
       formData.isComplete = 'false';
-      handleAddTask(props.currentProject._id, formData);
+      addTask(props.currentProject._id, formData);
       setFormData(initialState);
   };
 
