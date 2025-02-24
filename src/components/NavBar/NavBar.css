@@ -13,6 +13,7 @@ width: 100%;
 max-width: 1200px;
 }
 
+/* Left section - CODE_tracker */
 .nav-left {
 font-weight: bold;
 color: #f1faee;
@@ -27,6 +28,7 @@ color: #f1faee;
 text-transform: uppercase;
 }
 
+/* Right section */
 .nav-right {
 flex: 1;
 display: flex;
@@ -34,16 +36,19 @@ justify-content: flex-end;
 gap: 15px;
 }
 
+/* When user is signed in, stack links in a column */
 .nav-right.signed-in {
 flex-direction: column;
 align-items: flex-end;
 }
 
+/* When user is not signed in, keep links in a row */
 .nav-right.not-signed-in {
 flex-direction: row;
 align-items: center;
 }
 
+/* Dashboard link */
 .nav-dashboard {
 text-decoration: none;
 font-weight: bold;
@@ -58,6 +63,7 @@ transition: color 0.3s ease-in-out;
 color: #e63946;
 }
 
+/* Sign Out button */
 .nav-signout {
 background: none;
 border: none;
@@ -73,6 +79,7 @@ transition: color 0.3s ease-in-out;
 color: #e63946;
 }
 
+/* Non-signed-in navigation links */
 .nav-right a {
 text-decoration: none;
 font-weight: bold;
@@ -101,3 +108,5 @@ color: #e63946;
 .nav-right.not-signed-in {
     justify-content: center;
 }
+
+  
