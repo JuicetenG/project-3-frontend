@@ -25,6 +25,7 @@ const EditForm = ({ project, setCurrentProject, setProjects }) => {
             );
 
             setCurrentProject(null);
+            
         } catch (err) {
             console.log(err);
         }
