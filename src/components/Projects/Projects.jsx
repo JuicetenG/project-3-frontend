@@ -8,7 +8,7 @@ const Projects = (props) => {
         <div>
             {props.currentProject === null ? (
                 <ProjectList setCurrentProject={props.setCurrentProject} currentProject={props.currentProject} projects={props.projects}/>
-            ): (
+            ) : (
                 <ProjectDetails currentProject={props.currentProject} setCurrentProject={props.setCurrentProject}/>
             )}
         </div>
