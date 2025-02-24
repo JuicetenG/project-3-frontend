@@ -1,15 +1,22 @@
-
-// import './projects.css'
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import ProjectList from '../ProjectList/ProjectList';
 
 const Projects = (props) => {
-    return(
+    return (
         <div>
             {props.currentProject === null ? (
-                <ProjectList setCurrentProject={props.setCurrentProject} currentProject={props.currentProject} projects={props.projects}/>
+                <ProjectList
+                    setCurrentProject={props.setCurrentProject}
+                    currentProject={props.currentProject}
+                    projects={props.projects}
+                    editProject={props.editProject}
+                    deleteProject={props.deleteProject}
+                />
             ) : (
-                <ProjectDetails currentProject={props.currentProject} setCurrentProject={props.setCurrentProject} />
+                <ProjectDetails
+                    currentProject={props.currentProject}
+                    setCurrentProject={props.setCurrentProject}
+                />
             )}
         </div>
     );

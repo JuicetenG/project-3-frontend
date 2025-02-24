@@ -9,31 +9,31 @@ const index = async () => {
     const projectData = response.json();
     return projectData;
 
-  } catch(err) {
-      console.log(err);
+  } catch (err) {
+    console.log(err);
   }
 };
 
 const create = async (projectFormData) => {
-    try {
-      const response = await fetch(BASE_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json', 
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(projectFormData)
-      });
+  try {
+    const response = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(projectFormData)
+    });
 
-      const newProjectData = await response.json();
-      return newProjectData;
+    const newProjectData = await response.json();
+    return newProjectData;
 
-    } catch (err) {
-        console.log(err)
-    }   
+  } catch (err) {
+    console.log(err)
+  }
 };
 
-const updateProject = async (projectFormData, projectId) => {
+const editProject = async (projectFormData, projectId) => {
   try {
     const response = await fetch(`${BASE_URL}/${projectId}`, {
       method: 'PUT',
@@ -46,7 +46,7 @@ const updateProject = async (projectFormData, projectId) => {
 
     return response.json();
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 };
@@ -61,7 +61,7 @@ const deleteProject = async (projectId) => {
     const deletedProject = await response.json();
     return deletedProject;
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 };
@@ -77,16 +77,16 @@ const createTask = async (projectId, taskFormData) => {
       body: JSON.stringify(taskFormData),
     });
     return response.json();
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
 
 
-export { 
-  index, 
+export {
+  index,
   create,
-  updateProject, 
+  editProject,
   deleteProject,
   createTask
 }
