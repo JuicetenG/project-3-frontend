@@ -15,9 +15,14 @@
 
 .sidebar-container {
   grid-area: a;
+<<<<<<< HEAD
+  /* height: 100%; */
+=======
   background-color: #457b9d;
+>>>>>>> d419d5892919a62011b28e46765761b46971e495
   display: flex;
   flex-direction: column;
   padding-top: 40px;
   text-align: center;
+  background-color: #457b9d;
 }

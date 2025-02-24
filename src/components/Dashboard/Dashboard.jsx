@@ -61,7 +61,7 @@ const Dashboard = () => {
       project._id !== currentProject._id ? project : newCurrentProject
     ));
     setProjects(updatedProjectList);
-  };
+  }
 
   const editProject = async (project) => {
     setCurrentProject(project);
