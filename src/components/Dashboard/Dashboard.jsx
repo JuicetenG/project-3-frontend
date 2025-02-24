@@ -36,7 +36,6 @@ const Dashboard = () => {
     const fetchProjects = async () => {
       try {
         const fetchedProjects = await projectService.index();
-        console.log(fetchedProjects);
         const userProjects = fetchedProjects.filter((project) => project.user._id === user._id);
         setProjects(userProjects);
         
@@ -67,7 +66,7 @@ const Dashboard = () => {
         <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
       </main>
       <div className="sidebar-container">
-        <SideBar createProject={createProject} currentProject={currentProject} />
+        <SideBar createProject={createProject} currentProject={currentProject} setCurrentProject={setCurrentProject}/>
       </div>
     </div>
   );

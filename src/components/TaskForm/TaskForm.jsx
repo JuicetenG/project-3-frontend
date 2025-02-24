@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react';
+import * as taskService from '../../services/projectService';
 
 const initialState = {
   name: '',
@@ -7,7 +8,7 @@ const initialState = {
   category: 'general'
 };
 
-const TaskForm = () => {
+const TaskForm = (props) => {
   const [ formData, setFormData ] = useState({
     name: '',
     description: '',
@@ -15,6 +16,7 @@ const TaskForm = () => {
     category: 'general'
   });
 
+  console.log(props);
   
   const handleChange = (e) => {
     setFormData({
@@ -23,8 +25,17 @@ const TaskForm = () => {
     });
   };
 
+  const handleAddTask = async (projectId, formData) => {
+    console.log(projectId);
+    const newTask = await taskService.createTask(projectId, formData);
+    props.setCurrentProject({ ...props.currentProject, tasks: [...props.currentProject.tasks, newTask]});
+    console.log(newTask, props.currentProject);
+  }
+
   const handleSubmit = (e) => {
       e.preventDefault();
+      formData.isComplete = 'false';
+      handleAddTask(props.currentProject._id, formData);
       setFormData(initialState);
   };
 
