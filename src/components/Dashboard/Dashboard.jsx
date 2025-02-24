@@ -63,6 +63,8 @@ const Dashboard = () => {
     const newTask = await projectService.createTask(projectId, formData);
     const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
     setCurrentProject(newCurrentProject);
+
+    
     const updatedProjectList = projects.map((project) => (
       project._id !== currentProject._id ? project : newCurrentProject
     ));
