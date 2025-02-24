@@ -14,6 +14,12 @@ const Dashboard = () => {
   const [currentProject, setCurrentProject] = useState(null);
 
   useEffect(() => {
+    
+    // THIS IS AN EXAMPLE OF AN API CALL 
+    // AFTER YOU ARE LOGGED IN, PLEASE LOOK AT THE USERSERVICE
+    // HEADERS FOR SENDING THE JWT TOKEN OVER
+
+
     const fetchUsers = async () => {
       try {
         const fetchedUsers = await userService.index();
@@ -50,6 +56,7 @@ const Dashboard = () => {
     const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
     setCurrentProject(newCurrentProject);
 
+    
     const updatedProjectList = projects.map((project) => (
       project._id !== currentProject._id ? project : newCurrentProject
     ));
