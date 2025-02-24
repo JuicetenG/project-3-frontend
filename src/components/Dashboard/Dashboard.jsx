@@ -61,10 +61,11 @@ const Dashboard = () => {
 
   const addTask = async (projectId, formData) => {
     const newTask = await projectService.createTask(projectId, formData);
-    setCurrentProject({ ...currentProject, tasks: [...currentProject.tasks, newTask]});
-    console.log(currentProject);
+    const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask]}
+    setCurrentProject(newCurrentProject);
+
     const updatedProjectList = projects.map((project) => (
-      project._id !== currentProject._id ? project : currentProject
+      project._id !== currentProject._id ? project : newCurrentProject
     ));
     setProjects(updatedProjectList);
   }
