@@ -1,0 +1,51 @@
+.list-container {
+max-width: 1200px;
+margin: 0 auto;
+text-align: center;
+}
+
+
+.project-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+padding: 20px 0;
+}
+
+
+.project-card {
+background-color: #1d3557; 
+color: #f1faee;
+border: 2px solid #f1faee; 
+border-radius: 8px;
+padding: 20px;
+width: 280px;
+cursor: pointer;
+transition: transform 0.2s ease-in-out, border-color 0.3s;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.project-actions {
+margin-top: 15px;
+display: flex;
+gap: 10px;
+}
+
+button {
+background-color: #e63946;
+border: none;
+color: white;
+padding: 8px 12px;
+cursor: pointer;
+border-radius: 5px;
+font-size: 14px;
+transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+background-color: #d62828;
+}
+  
