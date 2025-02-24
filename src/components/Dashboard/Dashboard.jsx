@@ -64,10 +64,10 @@ const Dashboard = () => {
     <div className="main-container">
       <main className='projects-container'>
         <h1>Welcome, {user.username}</h1>
-        <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject}/>
+        <Projects projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
       </main>
       <div className="sidebar-container">
-        <SideBar createProject={createProject} />
+        <SideBar createProject={createProject} currentProject={currentProject} />
       </div>
     </div>
   );
