@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 
 import { signUp } from '../../services/authService';
+import './SignUpForm.css'
 
 const SignUpForm = () => {
     const { setUser } = useContext(UserContext)
@@ -44,7 +45,7 @@ const SignUpForm = () => {
     };
 
     return (
-        <main>
+        <main className="container">
             <h1>Sign Up</h1>
             <p>{message}</p>
             <form onSubmit={handleSubmit}>
@@ -65,7 +66,7 @@ const SignUpForm = () => {
                         type='password'
                         id='password'
                         value={password}
-                        name='password'
+                        name='password' 
                         onChange={handleChange}
                         required
                     />
@@ -88,6 +89,7 @@ const SignUpForm = () => {
             </form>
         </main>
     );
+
 };
 
-export default SignUpForm;
+export default SignUpForm

@@ -1,11 +1,9 @@
-// src/components/SignInForm/SignInForm.jsx
-
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
 import { signIn } from '../../services/authService';
-
 import { UserContext } from '../../contexts/UserContext';
+import './SignInForm.css'
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -36,12 +34,12 @@ const SignInForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <p>{message}</p>
+    <div className="container">
       <form autoComplete='off' onSubmit={handleSubmit}>
+        <h1>Sign In</h1>
+        <p>{message}</p>
         <div>
-          <label htmlFor='email'>Username:</label>
+          <label htmlFor='username'>Username:</label>
           <input
             type='text'
             autoComplete='off'
@@ -66,12 +64,11 @@ const SignInForm = () => {
         </div>
         <div>
           <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+          <button type="button" onClick={() => navigate('/')}>Cancel</button>
         </div>
       </form>
-    </main>
+    </div>
   );
 };
 
 export default SignInForm;
-
