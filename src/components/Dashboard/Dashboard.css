@@ -1,19 +1,16 @@
 .main-container {
   display: grid;
   height: 100%;
-  width: 1400px;
-  grid-template-columns: 1fr 3fr;
+  width: 100%;
+  grid-template-columns: 1fr 4fr;
   grid-template-areas: "a b";
   justify-self: center;
-  grid-gap: 10px;
 }
 
 .projects-container {
   grid-area: b;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(0deg, #8BC6EC 0%, #9599E2 100%);
-  /* background-color: #457b9d; */
-  border-radius: 15px;
+  /* background-image: linear-gradient(0deg, #8BC6EC 0%, #9599E2 100%); */
+  background-color: #edf2f4;
 }
 
 .sidebar-container {
@@ -23,10 +20,7 @@
   flex-direction: column;
   padding-top: 40px;
   text-align: center;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(0deg, #8BC6EC 0%, #9599E2 100%);
-  /* background-color: #457b9d; */
-  border-radius: 15px;
+  background-color: #abcaf1;
 }
 
 .dashboard-header {
