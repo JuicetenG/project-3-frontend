@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import EditForm from '../EditForm/EditForm';
+import EditTaskForm from '../EditTaskForm/EditTaskForm';
 
 const ProjectDetails = (props) => {
     // console.log(props)
     console.log(props);
     const [editingProject, setEditingProject] = useState(false);
+    const [currentTask, setCurrentTask] = useState(null);
 
     const categorizedTasks = props.currentProject.tasks.reduce((acc, task) => {
       if(!acc[task.category]) {
@@ -14,7 +16,7 @@ const ProjectDetails = (props) => {
       acc[task.category].push(task);
       return acc;
     }, {})
-
+    console.log(Object.entries(categorizedTasks))
     return (
        <div className="project-details-container">
         <main className="details-container">
@@ -35,9 +37,23 @@ const ProjectDetails = (props) => {
               <div key={category}>
                 <h2>{category}</h2>
                 <ul>
-                  {items.map(task => (
-                    <li key={task._id}>{task.name}: {task.description}
-                      <button onClick={()=> props.deleteTask(task._id)}>X</button>
+                  {items.map((task) => (
+                    <li key={task._id}>
+                      {currentTask !== null && currentTask._id === task._id ? (
+                        <div>
+                          <EditTaskForm 
+                            currentTask={currentTask}
+                            setCurrentTask={setCurrentTask}
+                            editTask={props.editTask}
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          {task.name}: {task.description}
+                          <button onClick={() => props.deleteTask(task._id)}>X</button>
+                          <button onClick={() => setCurrentTask(task)}>edit</button>
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>

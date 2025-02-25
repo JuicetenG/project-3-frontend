@@ -82,7 +82,7 @@ const createTask = async (projectId, taskFormData) => {
   }
 }
 
-const updateTask = async (projectId, taskId, taskFormData) => {
+const editTask = async (projectId, taskId, taskFormData) => {
   try {
     const response = await fetch(`${BASE_URL}/${projectId}/tasks/${taskId}`, {
       method: 'PUT',
@@ -121,5 +121,5 @@ export {
   deleteProject,
   createTask,
   deleteTask, 
-  updateTask,
+  editTask,
 }
