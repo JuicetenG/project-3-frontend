@@ -6,10 +6,10 @@ import SideBar from '../SideBar/SideBar';
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
 
-const Dashboard = () => {
+const Dashboard = ({ currentProject, setCurrentProject }) => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
-  const [currentProject, setCurrentProject] = useState(null);
+  // const [currentProject, setCurrentProject] = useState(null);
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
@@ -52,6 +52,7 @@ const Dashboard = () => {
 
   
   const editProject = async (projectFormData) => {
+    if (!currentProject) return;
     try {
       const updatedProject = await projectService.editProject(projectFormData, currentProject._id);
       setCurrentProject(updatedProject);
