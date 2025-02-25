@@ -27,7 +27,10 @@ const NavBar = () => {
       <div className="nav-container">
         {/* Left Section - CODE_tracker */}
         <div className="nav-left">
-          <span className="nav-title">CODE_tracker</span>
+          <span className="nav-title">
+            <span className="code">CODE</span>
+            .tracker(<span className="check">&#10003;</span>)
+          </span>
         </div>
 
         {/* Right Section - Dashboard & Sign Out OR Home, Sign In, Sign Up */}

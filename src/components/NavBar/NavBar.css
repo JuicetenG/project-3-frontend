@@ -1,6 +1,6 @@
 .navbar {
 background-color: #1d3557;
-padding: 15px 20px;
+padding: 15px 50px;
 display: flex;
 justify-content: center;
 }
@@ -10,7 +10,6 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 100%;
-max-width: 1200px;
 }
 
 .nav-left {
@@ -21,21 +20,28 @@ flex: 1;
 }
 
 .nav-title {
-font-size: 20px;
+font-size: 30px;
 font-weight: bold;
 color: #f1faee;
-text-transform: uppercase;
+}
+
+.code {
+  color: #e63946;
+}
+
+.check {
+  color: #e63946;
 }
 
 .nav-right {
 flex: 1;
 display: flex;
 justify-content: flex-end;
+width: 200px;
 gap: 15px;
 }
 
 .nav-right.signed-in {
-flex-direction: column;
 align-items: flex-end;
 }
 
@@ -49,7 +55,6 @@ text-decoration: none;
 font-weight: bold;
 color: #f1faee;
 font-size: 16px;
-margin-bottom: 10px;
 padding: 5px 10px;
 transition: color 0.3s ease-in-out;
 }
@@ -65,12 +70,13 @@ font-weight: bold;
 color: #f1faee;
 font-size: 16px;
 cursor: pointer;
-padding: 5px 10px;
+padding: 5px 0;
+padding-bottom: 2px;
 transition: color 0.3s ease-in-out;
 }
 
 .nav-signout:hover {
-color: #e63946;
+  color: #e63946;
 }
 
 .nav-right a {
