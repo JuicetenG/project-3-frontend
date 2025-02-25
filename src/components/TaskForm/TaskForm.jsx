@@ -20,7 +20,6 @@ const TaskForm = (props) => {
   }
 
   const categories = getUniqueCategories(props.currentProject.tasks);
-  console.log(categories);
 
   const handleChange = (e) => {
     setFormData({

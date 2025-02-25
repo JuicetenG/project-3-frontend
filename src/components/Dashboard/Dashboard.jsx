@@ -90,11 +90,14 @@ const addTask = async (projectId, formData) => {
 const editTask = async (formData, taskId) => {
   try {
     const updatedTask = await projectService.editTask(currentProject._id, taskId, formData);
+    console.log(updatedTask);
+    
     const newTaskList = currentProject.tasks.map((task) => (
       task._id !== taskId ? task : updatedTask
     ));
-    
+
     const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
+  
     setCurrentProject(newCurrentProject);
     setProjects(syncProjects(newCurrentProject));
     
@@ -103,12 +106,14 @@ const editTask = async (formData, taskId) => {
   }
 }
 
+
 const deleteTask = async (taskId) => {
   try {
     await projectService.deleteTask(currentProject._id, taskId);
     const newTaskList = currentProject.tasks.filter((task) => task._id !== taskId);
     const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
     setCurrentProject(newCurrentProject);
+    setProjects(syncProjects(newCurrentProject));
 
   } catch(err) {
     console.log(err);
