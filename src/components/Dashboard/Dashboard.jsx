@@ -136,7 +136,9 @@ const filteredProjects = projects.filter((project) =>
     <div className="main-container">
       <main className="projects-container">
         <div className="dashboard-header">
-          <h1>Welcome, {user.username}</h1>
+          {!currentProject && (
+            <h1>Welcome, {user.username}</h1>
+          )}
           {!currentProject && (
             <input 
             type="text"
