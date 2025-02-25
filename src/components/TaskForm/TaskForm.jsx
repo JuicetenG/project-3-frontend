@@ -53,9 +53,9 @@ const TaskForm = (props) => {
             value={formData.priority} 
             onChange={handleChange}
           >
-            <option defaultValue='low'>low</option>
-            <option value='normal'>normal</option>
-            <option value='high'>high</option>
+            <option defaultValue='low'>Low</option>
+            <option value='normal'>Normal</option>
+            <option value='high'>High</option>
           </select>
           <select 
             id="category" 
@@ -63,9 +63,9 @@ const TaskForm = (props) => {
             value={formData.category} 
             onChange={handleChange}
           >
-            <option defaultValue='general'>general</option>
-            <option value='backend'>backend</option>
-            <option value='frontend'>frontend</option>
+            <option defaultValue='general'>General</option>
+            <option value='backend'>Backend</option>
+            <option value='frontend'>Frontend</option>
           </select>
           <br />
           <br />
