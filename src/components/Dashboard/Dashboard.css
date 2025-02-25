@@ -24,5 +24,17 @@
 }
 
 .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 40px;
+  width: 100%;
+}
+
+.project-search-input {
+  width: 300px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 14px;
 }

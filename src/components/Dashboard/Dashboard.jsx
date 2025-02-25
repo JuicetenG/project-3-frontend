@@ -10,6 +10,7 @@ const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     
@@ -120,15 +121,28 @@ function syncProjects(newCurrentProject) {
   ));
 }
 
+const filteredProjects = projects.filter((project) =>
+  project.title.toLowerCase().includes(searchTerm.toLowerCase())
+)
+
 
   return (
     <div className="main-container">
       <main className="projects-container">
         <div className="dashboard-header">
           <h1>Welcome, {user.username}</h1>
+          {!currentProject && (
+            <input 
+            type="text"
+            placeholder="Search projects..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="project-search-input"
+            />
+          )}
         </div>
         <Projects
-          projects={projects}
+          projects={filteredProjects}
           setCurrentProject={setCurrentProject}
           currentProject={currentProject}
           editProject={editProject}
@@ -143,6 +157,7 @@ function syncProjects(newCurrentProject) {
           currentProject={currentProject}
           setCurrentProject={setCurrentProject}
           addTask={addTask}
+          projects={projects}
         />
       </div>
     </div>
