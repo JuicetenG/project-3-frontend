@@ -18,6 +18,7 @@ const Projects = (props) => {
                     currentProject={props.currentProject}
                     setCurrentProject={props.setCurrentProject}
                     editProject={props.editProject}
+                    editTask={props.editTask}
                     deleteTask={props.deleteTask}
                 />
             )}

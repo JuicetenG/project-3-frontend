@@ -54,13 +54,11 @@ const Dashboard = () => {
     try {
       const updatedProject = await projectService.editProject(projectFormData, currentProject._id);
       setCurrentProject(updatedProject);
-      setProjects((prevProjects) =>
-        prevProjects.map((p) => (p._id === updatedProject._id ? updatedProject : p))
-    );
+      setProjects(syncProjects(updatedProject));
         
-  } catch (err) {
-    console.log(err);
-  }
+    } catch (err) {
+      console.log(err);
+    }
 };
 
 const deleteProject = async (projectId) => {
@@ -77,22 +75,49 @@ const deleteProject = async (projectId) => {
 };
 
 const addTask = async (projectId, formData) => {
-  const newTask = await projectService.createTask(projectId, formData);
-  const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
-  setCurrentProject(newCurrentProject);
+  try {
+    const newTask = await projectService.createTask(projectId, formData);
+    const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
+    setCurrentProject(newCurrentProject);
+    setProjects(syncProjects(newCurrentProject));
 
-  const updatedProjectList = projects.map((project) => (
-    project._id !== currentProject._id ? project : newCurrentProject
-  ));
-  setProjects(updatedProjectList);
+  } catch(err) {
+    console.log(err);
+  }
 };
 
+const editTask = async (formData, taskId) => {
+  try {
+    const updatedTask = await projectService.editTask(currentProject._id, taskId, formData);
+    const newTaskList = currentProject.tasks.map((task) => (
+      task._id !== taskId ? task : updatedTask
+    ));
+    
+    const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
+    setCurrentProject(newCurrentProject);
+    setProjects(syncProjects(newCurrentProject));
+    
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 const deleteTask = async (taskId) => {
-  await projectService.deleteTask(currentProject._id, taskId);
-  const newTaskList = currentProject.tasks.filter((task) => task._id !== taskId);
-  console.log(newTaskList);
-  const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
-  setCurrentProject(newCurrentProject);
+  try {
+    await projectService.deleteTask(currentProject._id, taskId);
+    const newTaskList = currentProject.tasks.filter((task) => task._id !== taskId);
+    const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
+    setCurrentProject(newCurrentProject);
+
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+function syncProjects(newCurrentProject) {
+  return projects.map((project) => (
+    project._id !== currentProject._id ? project : newCurrentProject
+  ));
 }
 
 
@@ -108,6 +133,7 @@ const deleteTask = async (taskId) => {
           currentProject={currentProject}
           editProject={editProject}
           deleteProject={deleteProject}
+          editTask={editTask}
           deleteTask={deleteTask}
         />
       </main>
