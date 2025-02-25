@@ -42,10 +42,12 @@ const TaskForm = (props) => {
             <label htmlFor="title">Task name:</label>
             <input type="text" name='name' id='name' value={formData.name} onChange={handleChange} />
           </div>
+          <br />
           <div>
             <label htmlFor="description">Description:</label>
             <input type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
           </div>
+          <br />
           <select 
             id="priority" 
             name="priority" 
@@ -66,7 +68,11 @@ const TaskForm = (props) => {
             <option value='backend'>backend</option>
             <option value='frontend'>frontend</option>
           </select>
-          <div><button type="submit">Add Task</button></div>
+          <br />
+          <br />
+          <div>
+            <button type="submit">Add Task</button>
+          </div>
       </form>
   );
 };
