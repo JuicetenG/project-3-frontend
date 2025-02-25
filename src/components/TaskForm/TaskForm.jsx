@@ -15,7 +15,12 @@ const TaskForm = (props) => {
     category: 'general'
   });
 
-  console.log(props);
+  function getUniqueCategories(array) {
+    return [...new Set(array.map(obj => obj.category))];
+  }
+
+  const categories = getUniqueCategories(props.currentProject.tasks);
+  console.log(categories);
 
   const handleChange = (e) => {
     setFormData({
