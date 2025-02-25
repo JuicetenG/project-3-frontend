@@ -88,11 +88,11 @@ const addTask = async (projectId, formData) => {
 };
 
 const deleteTask = async (taskId) => {
-  // await projectService.deleteTask(projectId, taskId);
+  await projectService.deleteTask(currentProject._id, taskId);
   const newTaskList = currentProject.tasks.filter((task) => task._id !== taskId);
   console.log(newTaskList);
   const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
-  console.log(newCurrentProject);
+  setCurrentProject(newCurrentProject);
 }
 
 
