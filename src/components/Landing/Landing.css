@@ -1,13 +1,28 @@
-h1 {
-    color: #f1faee;
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
-h1,
-p {
-    margin-bottom: 20px;
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #1D3557;
+    padding: 1rem;
 }
 
-p {
-    color: #f1faee;
-    font-weight: 400;
+.landing-heading {
+    font-size: 2rem;
+    color: #EDF2F4;
+    margin-bottom: 1rem;
+}
+
+.landing-description {
+    font-size: 1.1rem;
+    color: #ccdde4
 }

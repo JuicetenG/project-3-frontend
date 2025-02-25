@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router';
 
 import { signIn } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
-import './SignInForm.css'
+import './SignInForm.css';
 
 const SignInForm = () => {
   const navigate = useNavigate();
-
   const { setUser } = useContext(UserContext);
 
   const [message, setMessage] = useState('');
@@ -25,7 +24,6 @@ const SignInForm = () => {
     evt.preventDefault();
     try {
       const signedInUser = await signIn(formData);
-
       setUser(signedInUser);
       navigate('/');
     } catch (err) {
@@ -34,37 +32,41 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="container">
-      <form autoComplete='off' onSubmit={handleSubmit}>
+    <div className="sign-in-container">
+      <form className="sign-in-form" autoComplete="off" onSubmit={handleSubmit}>
         <h1>Sign In</h1>
         <p>{message}</p>
         <div>
-          <label htmlFor='username'>Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
-            type='text'
-            autoComplete='off'
-            id='username'
+            className="sign-in-input"
+            type="text"
+            autoComplete="off"
+            id="username"
             value={formData.username}
-            name='username'
+            name="username"
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor='password'>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
-            type='password'
-            autoComplete='off'
-            id='password'
+            className="sign-in-input"
+            type="password"
+            autoComplete="off"
+            id="password"
             value={formData.password}
-            name='password'
+            name="password"
             onChange={handleChange}
             required
           />
         </div>
-        <div>
-          <button>Sign In</button>
-          <button type="button" onClick={() => navigate('/')}>Cancel</button>
+        <div className="sign-in-button-container">
+          <button className="sign-in-button">Sign In</button>
+          <button className="sign-in-button" type="button" onClick={() => navigate('/')}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

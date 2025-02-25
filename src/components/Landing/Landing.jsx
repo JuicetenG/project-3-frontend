@@ -24,9 +24,9 @@ const Landing = () => {
   }, []);
 
   return (
-    <main>
-      <h1>{displayedText}</h1>
-      <p>Sign up or sign in to track your code projects</p>
+    <main className="landing-container">
+      <h1 className="landing-heading">{displayedText}</h1>
+      <p className="landing-description">Sign up or sign in to track your code projects</p>
     </main>
   );
 };
