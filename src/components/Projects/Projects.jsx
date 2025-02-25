@@ -1,14 +1,15 @@
 import ProjectDetails from '../ProjectDetails/ProjectDetails';
 import ProjectList from '../ProjectList/ProjectList';
+// import { useState } from 'react';
 
 const Projects = (props) => {
     return (
         <div>
             {props.currentProject === null ? (
                 <ProjectList
-                    setCurrentProject={props.setCurrentProject}
-                    currentProject={props.currentProject}
                     projects={props.projects}
+                    currentProject={props.currentProject}
+                    setCurrentProject={props.setCurrentProject}
                     editProject={props.editProject}
                     deleteProject={props.deleteProject}
                 />
@@ -16,6 +17,8 @@ const Projects = (props) => {
                 <ProjectDetails
                     currentProject={props.currentProject}
                     setCurrentProject={props.setCurrentProject}
+                    editProject={props.editProject}
+                    deleteTask={props.deleteTask}
                 />
             )}
         </div>

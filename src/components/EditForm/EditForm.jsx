@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import * as projectService from '../../services/projectService';
 
-const EditForm = ({ project, setCurrentProject, setProjects }) => {
+const EditForm = ({ currentProject, editProject, setEditingProject }) => {
     const [formData, setFormData] = useState({
-        title: project.title,
-        description: project.description,
+        title: currentProject.title,
+        description: currentProject.description,
     });
 
     const handleInputChange = (e) => {
@@ -17,18 +16,8 @@ const EditForm = ({ project, setCurrentProject, setProjects }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const updatedProject = await projectService.editProject(formData, project._id);
-
-            setProjects((prevProjects) =>
-                prevProjects.map((p) => (p._id === updatedProject._id ? updatedProject : p))
-            );
-
-            setCurrentProject(null);
-            
-        } catch (err) {
-            console.log(err);
-        }
+        editProject(formData);
+        setEditingProject(false);
     };
 
     return (

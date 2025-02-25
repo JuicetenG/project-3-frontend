@@ -3,8 +3,6 @@ import { useEffect, useContext, useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import Projects from '../Projects/Projects';
 import SideBar from '../SideBar/SideBar';
-import EditForm from '../EditForm/EditForm';
-
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
 
@@ -51,34 +49,52 @@ const Dashboard = () => {
     }
   };
 
-  const addTask = async (projectId, formData) => {
-    const newTask = await projectService.createTask(projectId, formData);
-    const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
-    setCurrentProject(newCurrentProject);
-
-    
-    const updatedProjectList = projects.map((project) => (
-      project._id !== currentProject._id ? project : newCurrentProject
-    ));
-    setProjects(updatedProjectList);
-  }
-
-  const editProject = async (project) => {
-    setCurrentProject(project);
-  };
-
-  const deleteProject = async (projectId) => {
+  
+  const editProject = async (projectFormData) => {
     try {
-      await projectService.deleteProject(projectId);
-      const updatedProjectList = projects.filter((project) => project._id !== projectId);
-      setProjects(updatedProjectList);
-      if (currentProject && currentProject._id === projectId) {
-        setCurrentProject(null);
-      }
-    } catch (err) {
-      console.log(err);
+      const updatedProject = await projectService.editProject(projectFormData, currentProject._id);
+      setCurrentProject(updatedProject);
+      setProjects((prevProjects) =>
+        prevProjects.map((p) => (p._id === updatedProject._id ? updatedProject : p))
+    );
+        
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const deleteProject = async (projectId) => {
+  try {
+    await projectService.deleteProject(projectId);
+    const updatedProjectList = projects.filter((project) => project._id !== projectId);
+    setProjects(updatedProjectList);
+    if (currentProject && currentProject._id === projectId) {
+      setCurrentProject(null);
     }
-  };
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const addTask = async (projectId, formData) => {
+  const newTask = await projectService.createTask(projectId, formData);
+  const newCurrentProject = { ...currentProject, tasks: [...currentProject.tasks, newTask] };
+  setCurrentProject(newCurrentProject);
+
+  const updatedProjectList = projects.map((project) => (
+    project._id !== currentProject._id ? project : newCurrentProject
+  ));
+  setProjects(updatedProjectList);
+};
+
+const deleteTask = async (taskId) => {
+  // await projectService.deleteTask(projectId, taskId);
+  const newTaskList = currentProject.tasks.filter((task) => task._id !== taskId);
+  console.log(newTaskList);
+  const newCurrentProject = {...currentProject, tasks: [...newTaskList]};
+  console.log(newCurrentProject);
+}
+
 
   return (
     <div className="main-container">
@@ -92,14 +108,8 @@ const Dashboard = () => {
           currentProject={currentProject}
           editProject={editProject}
           deleteProject={deleteProject}
+          deleteTask={deleteTask}
         />
-        {currentProject && (
-          <EditForm
-            project={currentProject}
-            setCurrentProject={setCurrentProject}
-            setProjects={setProjects}
-          />
-        )}
       </main>
       <div className="sidebar-container">
         <SideBar
