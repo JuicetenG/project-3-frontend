@@ -1,18 +1,3 @@
-/* .sidebar-container {
-    width: 250px;
-    position: fixed; 
-    height: 100vh;
-    left: 0;
-    top: 60px; 
-    bottom: 0; 
-    background-color: #457b9d;
-    color: #f1faee;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-} */
 
 .project-section, .task-section {
     width: 100%;

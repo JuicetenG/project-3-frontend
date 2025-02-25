@@ -83,7 +83,9 @@ const Dashboard = () => {
   return (
     <div className="main-container">
       <main className="projects-container">
-        <h1>Welcome, {user.username}</h1>
+        <div className="dashboard-header">
+          <h1>Welcome, {user.username}</h1>
+        </div>
         <Projects
           projects={projects}
           setCurrentProject={setCurrentProject}
