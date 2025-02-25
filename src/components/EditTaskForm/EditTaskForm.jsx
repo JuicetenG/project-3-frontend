@@ -21,7 +21,7 @@ const EditTaskForm = (props) => {
   const handleSubmit = (e) => {
       e.preventDefault();
       props.editTask(formData, props.currentTask._id);
-      props.setCurrentTask(null);
+      props.setCurrentTaskId(null);
   };
 
   return (
@@ -42,7 +42,17 @@ const EditTaskForm = (props) => {
             <option value='normal'>normal</option>
             <option value='high'>high</option>
           </select>
-          <div><button type="submit">Add Task</button></div>
+          <select 
+            id="category" 
+            name="category" 
+            value={formData.category} 
+            onChange={handleChange}
+          >
+            <option defaultValue='general'>general</option>
+            <option value='backend'>backend</option>
+            <option value='frontend'>frontend</option>
+          </select>
+          <div><button type="submit">submit</button></div>
       </form>
   );
 };
