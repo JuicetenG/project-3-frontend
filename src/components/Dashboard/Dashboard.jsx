@@ -95,6 +95,7 @@ const deleteTask = async (taskId) => {
   console.log(newCurrentProject);
 }
 
+
   return (
     <div className="main-container">
       <main className="projects-container">
