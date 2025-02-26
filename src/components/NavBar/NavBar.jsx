@@ -6,7 +6,7 @@ import './NavBar.css'
 import { UserContext } from "../../contexts/UserContext";
 
 
-const NavBar = () => {
+const NavBar = ({ setCurrentProject }) => {
     // Pass the UserContext object to the useContext hook to access:
   // - The user state (which we use here).
   // - The setUser function to update the user state (which we aren't using).
@@ -20,6 +20,10 @@ const NavBar = () => {
     localStorage.removeItem('token')
     // clearing out our state
     setUser(null)
+  }
+
+  function handleDashboardClick(){
+    setCurrentProject(null)
   }
 
   return (
@@ -37,7 +41,7 @@ const NavBar = () => {
         <div className={`nav-right ${user ? "signed-in" : "not-signed-in"}`}>
           {user ? (
             <>
-              <Link to="/" className="nav-dashboard">Dashboard</Link>
+              <Link to="/" className="nav-dashboard" onClick={handleDashboardClick}>Dashboard</Link>
               <button className="nav-signout" onClick={handleSignOut}>Sign Out</button>
             </>
           ) : (

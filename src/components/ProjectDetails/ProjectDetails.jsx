@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import EditForm from '../EditForm/EditForm';
+import EditTaskForm from '../EditTaskForm/EditTaskForm';
+import './ProjectDetails.css'
 
 const ProjectDetails = (props) => {
-    // console.log(props)
-    console.log(props);
     const [editingProject, setEditingProject] = useState(false);
+    const [currentTaskId, setCurrentTaskId] = useState(null);
+    
 
     const categorizedTasks = props.currentProject.tasks.reduce((acc, task) => {
       if(!acc[task.category]) {
@@ -13,7 +15,8 @@ const ProjectDetails = (props) => {
 
       acc[task.category].push(task);
       return acc;
-    }, {})
+    }, [])
+    console.log(Object.entries(categorizedTasks));
 
     return (
        <div className="project-details-container">
@@ -25,26 +28,46 @@ const ProjectDetails = (props) => {
                 setEditingProject={setEditingProject}
               />
             ) : (
-              <div>
+              <div className="project-info">
                 <h1>{props.currentProject.title}</h1>
                 <p>{props.currentProject.description}</p>
               </div>
             )}
 
             {Object.entries(categorizedTasks).map(([category, items]) => (
-              <div key={category}>
+              <div key={category} className="task-category">
                 <h2>{category}</h2>
                 <ul>
-                  {items.map(task => (
-                    <li key={task._id}>{task.name}: {task.description}
-                      <button onClick={()=> props.deleteTask(task._id)}>X</button>
+                  {items.map((task) => (
+                    <li key={task._id} className={`task-item ${task.priority}-priority`}>
+                    {currentTaskId === task._id ? (
+                          <EditTaskForm 
+                            currentTask={task}
+                            setCurrentTaskId={setCurrentTaskId}
+                            editTask={props.editTask}
+                          />
+                      ) : (
+                        <div className="task-content">
+                          <div className="task-header">
+                            <span className="priority-badge">{task.priority}</span>
+                            <span className="task-name">{task.name}:</span>
+                          </div> 
+                          <span className="task-description">{task.description}</span>
+                        </div>
+                      )}
+                      <div className="task-buttons">
+                      <button className="delete-btn" onClick={() => props.deleteTask(task._id)}>🗑️</button>
+                      <button className="edit-btn" onClick={() => setCurrentTaskId(task._id)}>✏️</button>
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-            <button onClick={() => props.setCurrentProject(null)}>back</button>
-            <button onClick={() => setEditingProject(true)}>edit</button>
+            <div className="project-actions">
+            <button className="back-button" onClick={() => props.setCurrentProject(null)}>Back</button>
+            <button className="edit-project-button" onClick={() => setEditingProject(true)}>Edit Project</button>
+          </div>
         </main>
        </div>
     )

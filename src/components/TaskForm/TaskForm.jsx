@@ -20,7 +20,6 @@ const TaskForm = (props) => {
   }
 
   const categories = getUniqueCategories(props.currentProject.tasks);
-  console.log(categories);
 
   const handleChange = (e) => {
     setFormData({
@@ -42,19 +41,21 @@ const TaskForm = (props) => {
             <label htmlFor="title">Task name:</label>
             <input type="text" name='name' id='name' value={formData.name} onChange={handleChange} />
           </div>
+          <br />
           <div>
             <label htmlFor="description">Description:</label>
             <input type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
           </div>
+          <br />
           <select 
             id="priority" 
             name="priority" 
             value={formData.priority} 
             onChange={handleChange}
           >
-            <option defaultValue='low'>low</option>
-            <option value='normal'>normal</option>
-            <option value='high'>high</option>
+            <option defaultValue='low'>Low</option>
+            <option value='normal'>Normal</option>
+            <option value='high'>High</option>
           </select>
           <select 
             id="category" 
@@ -62,11 +63,15 @@ const TaskForm = (props) => {
             value={formData.category} 
             onChange={handleChange}
           >
-            <option defaultValue='general'>general</option>
-            <option value='backend'>backend</option>
-            <option value='frontend'>frontend</option>
+            <option defaultValue='general'>General</option>
+            <option value='backend'>Backend</option>
+            <option value='frontend'>Frontend</option>
           </select>
-          <div><button type="submit">Add Task</button></div>
+          <br />
+          <br />
+          <div>
+            <button type="submit">Add Task</button>
+          </div>
       </form>
   );
 };

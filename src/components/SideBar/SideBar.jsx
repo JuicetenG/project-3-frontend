@@ -4,6 +4,12 @@ import TaskForm from '../TaskForm/TaskForm';
 import './SideBar.css'
 
 const SideBar = (props) => {
+
+  const handleProjectChange = (e) => {
+    const selectedProject = props.projects.find(project => project._id === e.target.value)
+    props.setCurrentProject(selectedProject)
+  }
+
   return (
     <div className='sidebar-container'>
       {props.currentProject === null ? (
@@ -18,7 +24,18 @@ const SideBar = (props) => {
             currentProject={props.currentProject}
             setCurrentProject={props.setCurrentProject}
             addTask={props.addTask}
+            projects={props.projects} 
           />
+          <div className="project-dropdown">
+            <label htmlFor="project-select">Select Project:</label>
+            <select id="project-select" onChange={handleProjectChange} value={props.currentProject._id}>
+              {props.projects.map(project => (
+                <option key={project._id} value={project._id}>
+                  {project.title}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       )}
     </div>
