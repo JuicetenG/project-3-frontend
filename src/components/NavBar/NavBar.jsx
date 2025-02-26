@@ -20,6 +20,7 @@ const NavBar = ({ setCurrentProject }) => {
     localStorage.removeItem('token')
     // clearing out our state
     setUser(null)
+    setCurrentProject(null)
   }
 
   function handleDashboardClick(){

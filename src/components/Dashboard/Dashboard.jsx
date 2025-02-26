@@ -6,11 +6,11 @@ import SideBar from '../SideBar/SideBar';
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
 
-const Dashboard = ({ currentProject, setCurrentProject }) => {
+const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
-  // const [currentProject, setCurrentProject] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('')
+  const [currentProject, setCurrentProject] = useState(null);
+  
 
   useEffect(() => {
     
@@ -52,7 +52,6 @@ const Dashboard = ({ currentProject, setCurrentProject }) => {
 
   
   const editProject = async (projectFormData) => {
-    if (!currentProject) return;
     try {
       const updatedProject = await projectService.editProject(projectFormData, currentProject._id);
       setCurrentProject(updatedProject);
@@ -107,7 +106,6 @@ const editTask = async (formData, taskId) => {
   }
 }
 
-
 const deleteTask = async (taskId) => {
   try {
     await projectService.deleteTask(currentProject._id, taskId);
@@ -127,30 +125,11 @@ function syncProjects(newCurrentProject) {
   ));
 }
 
-const filteredProjects = projects.filter((project) =>
-  project.title.toLowerCase().includes(searchTerm.toLowerCase())
-)
-
-
   return (
     <div className="main-container">
       <main className="projects-container">
-        <div className="dashboard-header">
-          {!currentProject && (
-            <h1>Welcome, {user.username}</h1>
-          )}
-          {!currentProject && (
-            <input 
-            type="text"
-            placeholder="Search projects..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="project-search-input"
-            />
-          )}
-        </div>
         <Projects
-          projects={filteredProjects}
+          projects={projects}
           setCurrentProject={setCurrentProject}
           currentProject={currentProject}
           editProject={editProject}
