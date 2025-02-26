@@ -14,7 +14,7 @@ const ProjectList = (props) => {
     <div className="list-container">
       <ul>
       <div className="dashboard-header">
-          <h1>Welcome, {user.username}</h1>
+          <h1>{user.username}'s Project Dashboard</h1>
           {!props.currentProject && (
             <input 
             type="text"
@@ -25,22 +25,23 @@ const ProjectList = (props) => {
             />
           )}
         </div>
-        <h1>Projects</h1>
         <div className="project-grid">
           {filteredProjects.map((project) => (
-            <div className="project-card" key={project._id} onClick={() => props.setCurrentProject(project)}>
-              <div className="project-content">
-                <strong>{project.title}</strong>
-                <br />
-                {project.description}
-              </div>
-              <div className="project-actions">
-                <button className="delete-btn" onClick={(e) => {
-                  e.stopPropagation();
-                  props.deleteProject(project._id);
-                }}>
-                🗑️
-                </button>
+            <div className="card-grid-container" key={project._id}>
+              <div className="project-card"  onClick={() => props.setCurrentProject(project)}>
+                <div className="project-content">
+                  <h2>{project.title}</h2>
+                  <hr />
+                  <div>{project.description}</div>
+                </div>
+                <div className="project-actions">
+                  <button className="delete-btn" onClick={(e) => {
+                    e.stopPropagation();
+                    props.deleteProject(project._id);
+                  }}>
+                  🗑️
+                  </button>
+                </div>
               </div>
             </div>
           ))}

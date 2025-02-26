@@ -6,11 +6,9 @@ import SideBar from '../SideBar/SideBar';
 import * as userService from '../../services/userService';
 import * as projectService from '../../services/projectService';
 
-const Dashboard = () => {
+const Dashboard = ({ currentProject, setCurrentProject }) => {
   const { user } = useContext(UserContext);
   const [projects, setProjects] = useState([]);
-  const [currentProject, setCurrentProject] = useState(null);
-  
 
   useEffect(() => {
     

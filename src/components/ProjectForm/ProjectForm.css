@@ -1,5 +1,31 @@
+.project-form-container {
+  width: 60%;
+}
+
+.project-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-form-group label {
+  margin-right: auto;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.project-form-group input {
+  font-size: 20px;
+  padding: 4px;
+}
+
 .project-form {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 30px;
+}
+
+.project-form button {
+  font-size: 18px;
 }
