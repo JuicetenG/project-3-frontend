@@ -16,6 +16,7 @@ const ProjectDetails = (props) => {
       acc[task.category].push(task);
       return acc;
     }, {})
+    
     console.log(categorizedTasks);
 
     return (
