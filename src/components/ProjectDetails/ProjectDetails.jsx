@@ -15,8 +15,8 @@ const ProjectDetails = (props) => {
 
       acc[task.category].push(task);
       return acc;
-    }, [])
-    console.log(Object.entries(categorizedTasks));
+    }, {})
+    console.log(categorizedTasks);
 
     return (
        <div className="project-details-container">
