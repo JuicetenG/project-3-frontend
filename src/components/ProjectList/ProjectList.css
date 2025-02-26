@@ -48,4 +48,11 @@ transition: background-color 0.2s ease-in-out;
 /* button:hover {
 background-color: #d62828;
 } */
-  
+ 
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
