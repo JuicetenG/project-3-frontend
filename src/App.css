@@ -16,3 +16,7 @@ nav {
   grid-area: b;
   height: 100%;
 }
+
+textarea {
+  padding: 3px;
+}

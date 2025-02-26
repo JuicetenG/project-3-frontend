@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './EditForm.css';
 
 const EditForm = ({ currentProject, editProject, setEditingProject }) => {
     const [formData, setFormData] = useState({
@@ -22,10 +23,9 @@ const EditForm = ({ currentProject, editProject, setEditingProject }) => {
 
     return (
         <div className="edit-form-container">
-            <h2>Edit Project</h2>
             <form onSubmit={handleSubmit}>
+                <button type="submit">Save</button>
                 <div>
-                    <label htmlFor="title">Title</label>
                     <input
                         type="text"
                         id="title"
@@ -35,15 +35,14 @@ const EditForm = ({ currentProject, editProject, setEditingProject }) => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="description">Description</label>
                     <textarea
+                        rows="3"
                         id="description"
                         name="description"
                         value={formData.description}
                         onChange={handleInputChange}
                     />
                 </div>
-                <button type="submit">Save Changes</button>
             </form>
         </div>
     );

@@ -34,7 +34,7 @@ const ProjectDetails = (props) => {
                   <button className="edit-btn" onClick={() => setEditingProject(true)}>✏️</button>
                 </div>
                 <h1>{props.currentProject.title}</h1>
-                <p>{props.currentProject.description}</p>
+                <p className='project-description'>{props.currentProject.description}</p>
               </div>
             )}
 
