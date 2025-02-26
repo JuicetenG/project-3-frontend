@@ -21,6 +21,7 @@ const ProjectForm = (props) => {
   };
 
   const handleSubmit = (e) => {
+    if(formData.title === '' || formData.description === '') return;
     e.preventDefault();
     props.createProject(formData);
     setFormData(initialState);
@@ -29,13 +30,13 @@ const ProjectForm = (props) => {
   return (
     <div className="project-form-container">
       <form className='project-form' onSubmit={handleSubmit}>
-        <div>
+        <div className='project-form-group'>
           <label htmlFor="title">Project title:</label>
           <input type="text" name='title' id='title' value={formData.title} onChange={handleChange} />
         </div>
-        <div>
+        <div className='project-form-group'>
           <label htmlFor="description">Description:</label>
-          <input type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
+          <textarea type="text" name='description' id='description' value={formData.description} onChange={handleChange} rows="6"/>
         </div>
         <div><button type='submit'>Submit</button></div>
       </form>

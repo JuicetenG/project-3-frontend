@@ -28,33 +28,34 @@ const NavBar = ({ setCurrentProject }) => {
   }
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        {/* Left Section - CODE_tracker */}
-        <div className="nav-left">
-          <span className="nav-title">
-            <span className="code">CODE</span>
-            .tracker(<span className="check">&#10003;</span>)
-          </span>
+    <div className="nav-container">
+      <nav className="navbar">
+        <div className="nav-container">
+          {/* Left Section - CODE_tracker */}
+          <div className="nav-left">
+            <span className="nav-title">
+              <span className="code">CODE</span>
+              .tracker(<span className="check">&#10003;</span>)
+            </span>
+          </div>
+          {/* Right Section - Dashboard & Sign Out OR Home, Sign In, Sign Up */}
+          <div className={`nav-right ${user ? "signed-in" : "not-signed-in"}`}>
+            {user ? (
+              <>
+                <Link to="/" className="nav-dashboard" onClick={handleDashboardClick}>Dashboard</Link>
+                <button className="nav-signout" onClick={handleSignOut}>Sign Out</button>
+              </>
+            ) : (
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/sign-in">Sign In</Link>
+                <Link to="/sign-up">Sign Up</Link>
+              </>
+            )}
+          </div>
         </div>
-
-        {/* Right Section - Dashboard & Sign Out OR Home, Sign In, Sign Up */}
-        <div className={`nav-right ${user ? "signed-in" : "not-signed-in"}`}>
-          {user ? (
-            <>
-              <Link to="/" className="nav-dashboard" onClick={handleDashboardClick}>Dashboard</Link>
-              <button className="nav-signout" onClick={handleSignOut}>Sign Out</button>
-            </>
-          ) : (
-            <>
-              <Link to="/">Home</Link>
-              <Link to="/sign-in">Sign In</Link>
-              <Link to="/sign-up">Sign Up</Link>
-            </>
-          )}
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

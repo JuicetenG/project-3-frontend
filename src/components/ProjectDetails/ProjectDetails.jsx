@@ -29,6 +29,10 @@ const ProjectDetails = (props) => {
               />
             ) : (
               <div className="project-info">
+                <div className="project-edit-actions">
+                  <button className="back-button" onClick={() => props.setCurrentProject(null)}>Back</button>
+                  <button className="edit-btn" onClick={() => setEditingProject(true)}>✏️</button>
+                </div>
                 <h1>{props.currentProject.title}</h1>
                 <p>{props.currentProject.description}</p>
               </div>
@@ -50,24 +54,20 @@ const ProjectDetails = (props) => {
                         <div className="task-content">
                           <div className="task-header">
                             <span className="priority-badge">{task.priority}</span>
-                            <span className="task-name">{task.name}:</span>
+                            <span className="task-name">{task.name}</span>
                           </div> 
-                          <span className="task-description">{task.description}</span>
+                          <div className="task-description">{task.description}</div>
                         </div>
                       )}
                       <div className="task-buttons">
-                      <button className="delete-btn" onClick={() => props.deleteTask(task._id)}>🗑️</button>
-                      <button className="edit-btn" onClick={() => setCurrentTaskId(task._id)}>✏️</button>
+                        <button className="delete-btn" onClick={() => props.deleteTask(task._id)}>🗑️</button>
+                        <button className="edit-btn" onClick={() => setCurrentTaskId(task._id)}>✏️</button>
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-            <div className="project-actions">
-            <button className="back-button" onClick={() => props.setCurrentProject(null)}>Back</button>
-            <button className="edit-project-button" onClick={() => setEditingProject(true)}>Edit Project</button>
-          </div>
         </main>
        </div>
     )

@@ -5,8 +5,7 @@
   grid-template-rows: 100px 1fr;
   grid-gap: 10px;
   grid-template-areas: "a"
-                       "b";
-                       
+                       "b";               
 }
 
 nav {
@@ -15,4 +14,5 @@ nav {
 
 .routes {
   grid-area: b;
+  height: 100%;
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './EditTaskForm.css';
 
 const EditTaskForm = (props) => {
   const [ formData, setFormData ] = useState({
@@ -25,35 +25,29 @@ const EditTaskForm = (props) => {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
-          <div>
-            <input type="text" name='name' id='name' value={formData.name} onChange={handleChange} />
-          </div>
-          <div>
-            <input type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
-          </div>
-          <select 
-            id="priority" 
-            name="priority" 
-            value={formData.priority} 
-            onChange={handleChange}
-          >
-            <option defaultValue='low'>low</option>
-            <option value='normal'>normal</option>
-            <option value='high'>high</option>
-          </select>
-          <select 
-            id="category" 
-            name="category" 
-            value={formData.category} 
-            onChange={handleChange}
-          >
-            <option defaultValue='general'>general</option>
-            <option value='backend'>backend</option>
-            <option value='frontend'>frontend</option>
-          </select>
-          <div><button type="submit">submit</button></div>
-      </form>
+      <div className="edit-task-form-container">
+        <div className="edit-task-form">
+          <form onSubmit={handleSubmit}>
+              <div className='edit-task-form-section-1'>
+                <select
+                  id="priority"
+                  name="priority"
+                  value={formData.priority}
+                  onChange={handleChange}
+                >
+                  <option defaultValue='low'>low</option>
+                  <option value='normal'>normal</option>
+                  <option value='high'>high</option>
+                </select>
+                <input type="text" name='name' id='name' value={formData.name} onChange={handleChange} />
+              </div>
+              <div className='edit-task-form-section-2'>
+                <textarea rows="2" type="text" name='description' id='description' value={formData.description} onChange={handleChange} />
+                <button type="submit">submit</button>
+              </div>
+          </form>
+        </div>
+      </div>
   );
 };
 
